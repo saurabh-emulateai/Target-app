@@ -10,6 +10,8 @@ function resolveApiBaseUrl() {
     if (hostname === "localhost" || hostname === "127.0.0.1") {
       return "http://localhost:8000";
     }
+    // Fallback for IP-based or other hostname access
+    return `${window.location.protocol}//${hostname}:8000`;
   }
 
   throw new Error("Missing VITE_API_BASE_URL");
